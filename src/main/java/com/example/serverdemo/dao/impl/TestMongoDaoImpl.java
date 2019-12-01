@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class TestMongoDaoImpl implements TestMongoDao {
-
     private static final String DB_USER ="user";
 
     @Autowired
