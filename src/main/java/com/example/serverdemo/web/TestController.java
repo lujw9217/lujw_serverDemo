@@ -2,50 +2,38 @@ package com.example.serverdemo.web;
 
 import com.example.serverdemo.po.User;
 import com.example.serverdemo.service.TestService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
-@RequestMapping("/test")
+@RequestMapping("/dev")
 @RestController
 public class TestController {
 
     @Resource
     private TestService testService;
 
-    @GetMapping(value = "/login")
+    @PostMapping(value = "/check")
     @ResponseBody
-    public String insertUser(String name,String pass){
+    public String insertUser(String userName,String password,String authCode){
         String response;
-        if("lujw".equals(name)&&"123".equals(pass)){
+        if("lujw".equals(userName)&&"123".equals(password)){
             System.out.println("登陆成功");
             User user=new User();
-            user.setUserName(name);
-            user.setPassword(pass);
-            response=testService.insertUser(user);
+            user.setUserName(userName);
+            user.setPassword(password);
+            testService.insertUser(user);
+            response="success";
         }else{
             response="登陆失败";
         }
         return response;
     }
 
-    @GetMapping(value = "/cookice")
+    @GetMapping(value = "/authCode")
     @ResponseBody
-    public String insertCookie(String name,String pass){
-        String response;
-        if("lujw".equals(name)&&"123".equals(pass)){
-            System.out.println("登陆成功");
-            User user=new User();
-            user.setUserName(name);
-            user.setPassword(pass);
-            response=testService.insertCookie(user);
-        }else{
-            response="登陆失败";
-        }
-        return response;
+    public void insertCookie( ){
+
     }
 
 }
