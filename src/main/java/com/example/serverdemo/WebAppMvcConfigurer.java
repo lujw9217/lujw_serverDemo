@@ -5,6 +5,8 @@ import com.example.serverdemo.timeTask.TimeTask;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -24,6 +26,9 @@ import java.util.concurrent.ScheduledThreadPoolExecutor;
  * -----------------------------------------
  * Lujw   2019/12/10      创建
  */
+@EnableScheduling//扫描Scheduled定时任务注解，并执行
+@Configuration//spring mvc 配置控制
+//@EnableWebMvc//启动spring mvc
 public class WebAppMvcConfigurer extends WebMvcConfigurerAdapter {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(WebAppMvcConfigurer.class);
