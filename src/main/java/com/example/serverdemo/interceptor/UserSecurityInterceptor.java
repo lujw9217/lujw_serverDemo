@@ -7,6 +7,7 @@ import com.example.serverdemo.base.util.BaseUtil;
 import com.example.serverdemo.module.userManage.vo.ManagerUserVo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -19,7 +20,7 @@ import java.util.List;
 /**
  * @author : Lujw
  * @Class Name   : UserSecurityInterceptor
- * @Description : TODO
+ * @Description : 拦截器
  * @Project : serverdemo
  * @Program : com.example.serverdemo.interceptor
  * @date : 2019/12/10 17:02
@@ -27,6 +28,7 @@ import java.util.List;
  * -----------------------------------------
  * Lujw   2019/12/10      创建
  */
+@Component("userSecurityInterceptor")
 public class UserSecurityInterceptor implements HandlerInterceptor {
     private Logger LOGGER = LoggerFactory.getLogger(this.getClass());
 

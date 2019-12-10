@@ -18,7 +18,7 @@ import java.util.List;
 public class UserDaoImpl implements IUserDao {
 
     //用户表
-    private static final String COLLECTION_TABLE_USER = "managerUserPo";
+    private static final String COLLECTION_TABLE_USER = "user";
     //注入MongoDBTemplate
     @Autowired
     private MongoTemplate mongoTemplate;

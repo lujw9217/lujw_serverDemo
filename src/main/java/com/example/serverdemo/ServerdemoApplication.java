@@ -3,9 +3,9 @@ package com.example.serverdemo;
 import com.example.serverdemo.base.listener.SessionListener;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+
+import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
@@ -15,8 +15,8 @@ import javax.servlet.ServletException;
 /**
  * spring boot 启动 类
  */
-//@Configuration//配置控制
-//@ComponentScan   //组件扫描
+@Configuration//配置控制
+@ComponentScan   //组件扫描
 @EnableAutoConfiguration //启用自动配置
 //微服务
 //@EnableFeignClients

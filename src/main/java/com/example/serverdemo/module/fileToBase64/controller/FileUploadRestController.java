@@ -10,10 +10,10 @@ import com.example.serverdemo.module.userManage.constant.Menu;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
@@ -28,7 +28,7 @@ import javax.servlet.http.HttpServletResponse;
  * -----------------------------------------
  * Lujw   2019/10/28      创建
  */
-@RestController
+@Controller
 @RequestMapping("/web")
 public class FileUploadRestController {
     private static final Logger LOGGER = LoggerFactory.getLogger(EncryptAndDecodeService.class);
