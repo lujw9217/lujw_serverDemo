@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!--生产日志路径-->
+	<!--<property name="LOG_FILE_ROOT" value="/opt/logs" />-->
+    <!--本地日志路径-->
+    <!--<property name="LOG_FILE_ROOT" value="D:\logs" />-->
+	<!-- appenders -->
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%date{yyyy-MM-dd HH:mm:ss}[%level][%thread][%logger]-%msg%n</pattern>
+			<pattern>%date{yyyy-MM-dd HH:mm:ss.SSS}[%level][%thread][%logger.java:%line] - %msg%n</pattern>
+		</encoder>
+	</appender>
+	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${LOG_FILE_ROOT}/serverDemo.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- 每天生成一个日志文件
+			<fileNamePattern>${LOG_FILE_ROOT}/serverDemo-%d{yyyy-MM-dd}.log</fileNamePattern>-->
+
+			<!-- 每100M 压缩一个日志文件 -->
+			<fileNamePattern>${LOG_FILE_ROOT}/serverDemo-%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy	class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>100MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+
+		</rollingPolicy>
+		<encoder>
+			<pattern>%date{yyyy-MM-dd HH:mm:ss}[%level][%thread][%logger.java:%line]-%msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<!-- loggers -->
+	<!-- 将项目 代码目录 日志级别设置为 debug -->
+	<logger name="com.example.serverdemo" level="DEBUG" />
+
+	<logger name="org.thymeleaf" level="INFO"/>
+ 	<logger name="org.apache" level="INFO" />
+	<logger name="org.springframework" level="INFO" />
+	<logger name="org.hibernate" level="INFO" />
+	<logger name="org.jboss" level="INFO" />
+	<logger name="httpclient.wire" level="INFO" />
+	<logger name="org.exolab.castor.xml.util" level="INFO" />
+	<logger name="com.netflix" level="INFO" />
+
+	<springProfile name="dev">
+		<!-- root Logger -->
+		<root level="DEBUG">
+			<appender-ref ref="STDOUT" level="INFO"/>
+			<appender-ref ref="FILE" level="DEBUG"/>
+		</root>
+	</springProfile>
+
+	<springProfile name="prod">
+		<!-- root Logger -->
+		<root level="DEBUG">
+			<appender-ref ref="FILE" level="DEBUG"/>
+		</root>
+	</springProfile>
+</configuration>
