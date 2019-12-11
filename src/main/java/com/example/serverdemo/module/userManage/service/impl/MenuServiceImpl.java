@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 /**
  * 服务接口实现类
  */
-@Service
+@Service("menuServiceImpl")
 public class MenuServiceImpl implements IMenuService {
     //logger
     private static final Logger LOGGER = LoggerFactory.getLogger(MenuChecker.class);

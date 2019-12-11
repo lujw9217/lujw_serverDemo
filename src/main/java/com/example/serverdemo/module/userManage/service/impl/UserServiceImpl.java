@@ -30,7 +30,7 @@ import java.util.*;
 /**
  * 用户服务接口 实现类
  */
-@Service
+@Service("userServiceImpl")
 public class UserServiceImpl implements IUserService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(UserServiceImpl.class);

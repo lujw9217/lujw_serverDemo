@@ -2,8 +2,8 @@ package com.example.serverdemo.module.authCode;
 
 import com.example.serverdemo.base.exception.TopException;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -37,7 +37,7 @@ public class AuthCodeController {
      * @update date   :
      * @update author :
      */
-    @GetMapping(value="/authCode")
+    @RequestMapping(value="/authCode",method = RequestMethod.GET)
     public String authCode(HttpServletRequest request, HttpServletResponse response) throws TopException {
         try{
             // 设置response属性

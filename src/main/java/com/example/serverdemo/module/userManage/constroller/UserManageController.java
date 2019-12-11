@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -74,8 +73,8 @@ public class UserManageController {
         }
         //将用户存入session
         request.getSession().setAttribute("user",managerUserVo);
-        resultObject.setResCode(ResultObject.SUCCESS);
-        resultObject.setResMsg(managerUserVo);
+        resultObject.setResCode("1000");
+        resultObject.setResMsg("sucess");
         return resultObject;
     }
 
