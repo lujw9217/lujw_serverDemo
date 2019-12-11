@@ -34,7 +34,7 @@ public class TimeTask {
     private String active;
 
     //配置文件中的秘钥
-    @Value("${AseKey}")
+//    @Value("${AseKey}")
     private String key;
 
     @Resource

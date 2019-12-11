@@ -40,7 +40,7 @@ public class EncryptAndDecodeService {
     private static final Logger LOGGER = LoggerFactory.getLogger(EncryptAndDecodeService.class);
 
     //配置文件中的秘钥
-    @Value("${AseKey}")
+//    @Value("${AseKey}")
     private String key;
 
     @Autowired

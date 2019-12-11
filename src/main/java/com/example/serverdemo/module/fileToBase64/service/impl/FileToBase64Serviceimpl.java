@@ -89,11 +89,11 @@ public class FileToBase64Serviceimpl implements FileToBase64Service {
         }
         String str=path.toString();
 
-        //dev
-        String fileDownloadUrl="C:\\Users\\fei\\Desktop\\download\\"+ str.substring(str.lastIndexOf("\\")+1,str.length());
+//        //dev
+//        String fileDownloadUrl="C:\\Users\\fei\\Desktop\\download\\"+ str.substring(str.lastIndexOf("\\")+1,str.length());
 
-        //pro
-//        String fileDownloadUrl= "lujw.xyz:9000/prod/download/1576049727946..png"+ str.substring(str.lastIndexOf("\\")+1,str.length());
+//        pro
+        String fileDownloadUrl="file"+ str.substring(str.lastIndexOf("\\")+1,str.length());
 
 
         LOGGER.info("《------------------文件下载地址，fileDownloadUrl:{}",fileDownloadUrl);
