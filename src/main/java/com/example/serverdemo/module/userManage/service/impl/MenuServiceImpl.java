@@ -28,15 +28,11 @@ public class MenuServiceImpl implements IMenuService {
      * @update author :
      */
     @Override
-    public CommonResObject getMenuByUser(ManagerUserVo managerUserVo) {
-        CommonResObject commonResObject = new CommonResObject();
+    public ResMenus getMenuByUser(ManagerUserVo managerUserVo) {
         //设置菜单响应对象
         ResMenus resMenus = new ResMenus();
         resMenus.setUserName(managerUserVo.getUserName());
         resMenus.setMenuVos(managerUserVo.getMenuVos());
-        commonResObject.setResMsg("菜单查询成功");
-        commonResObject.setResObj(resMenus);
-        LOGGER.info("菜单响应成功");
-        return commonResObject;
+        return resMenus;
     }
 }

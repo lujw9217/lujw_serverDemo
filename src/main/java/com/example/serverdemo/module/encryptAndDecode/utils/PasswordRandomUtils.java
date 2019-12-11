@@ -103,9 +103,4 @@ public class PasswordRandomUtils {
         }
         return code.toString();
     }
-
-//    public static void main(String args[]) {
-//        String randomSecretKey = PasswordRandomUtils.getRandom(64, TYPE.LETTER_CAPITAL_NUMBER_SIGN);
-//        System.out.println(randomSecretKey);
-//    }
 }

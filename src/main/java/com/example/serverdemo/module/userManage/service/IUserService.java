@@ -1,7 +1,7 @@
 package com.example.serverdemo.module.userManage.service;
 
-import com.example.serverdemo.base.entity.ResultObject;
 import com.example.serverdemo.base.exception.TopException;
+import com.example.serverdemo.module.userManage.po.UsersAndMenus;
 import com.example.serverdemo.module.userManage.vo.ManagerUserForm;
 import com.example.serverdemo.module.userManage.vo.ManagerUserVo;
 
@@ -12,13 +12,13 @@ public interface IUserService {
 
     ManagerUserVo login(String userName, String password, String idCode, String authCode, String ip) throws TopException;
 
-    ResultObject getAllAndMenus();
+    UsersAndMenus getAllAndMenus();
 
-    ResultObject addUser(ManagerUserForm managerUserForm) throws TopException;
+    void addUser(ManagerUserForm managerUserForm) throws TopException;
 
-    ResultObject modifyUser(ManagerUserForm managerUserForm) throws TopException;
+    void modifyUser(ManagerUserForm managerUserForm) throws TopException;
 
-    ResultObject deleteUser(String id);
+    void deleteUser(String id);
 
-    ResultObject modifyPwd(String oldPwd, String newPwd, ManagerUserVo userVo) throws TopException;
+     void modifyPwd(String oldPwd, String newPwd, ManagerUserVo userVo) throws TopException;
 }

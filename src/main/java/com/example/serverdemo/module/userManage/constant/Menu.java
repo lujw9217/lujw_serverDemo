@@ -10,9 +10,9 @@ public enum  Menu {
     // 用户管理
     CUSTOMER_USER_MANAGE(1,"用户管理","userManage"),
     // 加解密
-    ENCRY_AND_DECRY(2,"加密/解密","encryAndDecry"),
+    ENCRY_AND_DECRY(2,"加/解密","encryAndDecry"),
     //文件转Base64
-    FILE_TO_BASE64(3,"文件编/解码","fileToBase64");
+    FILE_TO_BASE64(3,"编/解码","fileToBase64");
 
     private int code;
 

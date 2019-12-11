@@ -67,9 +67,9 @@ public class GenericExceptionHandler implements HandlerExceptionResolver {
             }
         }else {
             // 其他异常
-            errorMsg.append("未知异常信息：");
+//            errorMsg.append("未知异常信息：");
             errorMsg.append(ex.getMessage());
-            LOGGER.debug("未知异常信息：" + ex.getMessage());
+            LOGGER.debug( ex.getMessage());
         }
         //将异常信息以json格式返回
         ResultObject resObj = new ResultObject();

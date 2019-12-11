@@ -22,7 +22,7 @@ import java.util.List;
  */
 @Repository
 public class EncryRepositoryImpl implements IEncryRepository {
-    private static final String SECRET_KEY = "user";
+    private static final String SECRET_KEY = "secret_key";
 
     @Autowired
     private MongoTemplate mongoTemplate;

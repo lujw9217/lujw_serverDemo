@@ -1,5 +1,6 @@
 package com.example.serverdemo.module.encryptAndDecode.controller;
 
+import com.example.serverdemo.base.entity.CommonResObject;
 import com.example.serverdemo.base.entity.ResultObject;
 import com.example.serverdemo.base.exception.TopException;
 import com.example.serverdemo.base.security.WhichMenu;
@@ -65,11 +66,10 @@ public class EncryAndDecodeController {
     @ResponseBody
     @RequestMapping(value = "/encrypt", method = RequestMethod.POST)
     @WhichMenu(Menu.ENCRY_AND_DECRY)
-    public ResultObject encrypt(@RequestBody EncryForm encryForm) throws TopException {
-        ResultObject resultObject=new ResultObject();
-        resultObject.setResMsg(encryptAndDecodeService.getEncrypt(encryForm));
-        resultObject.setResCode(ResultObject.SUCCESS);
-        return resultObject;
+    public CommonResObject encrypt(@RequestBody EncryForm encryForm) throws TopException {
+        CommonResObject commonResObject=new CommonResObject();
+        commonResObject.setResObj(encryptAndDecodeService.getEncrypt(encryForm));
+        return commonResObject;
     }
 
     /**
@@ -87,12 +87,11 @@ public class EncryAndDecodeController {
     @ResponseBody
     @RequestMapping(value = "/addSecretKey", method = RequestMethod.POST)
     @WhichMenu(Menu.ENCRY_AND_DECRY)
-    public ResultObject addSecretKey(@RequestBody SecretKeyForm secretKeyForm) throws TopException {
-        ResultObject resultObject=new ResultObject();
+    public CommonResObject addSecretKey(@RequestBody SecretKeyForm secretKeyForm) throws TopException {
         encryptAndDecodeService.addSecretKey(secretKeyForm);
-        resultObject.setResMsg("秘钥成功添加");
-        resultObject.setResCode(ResultObject.SUCCESS);
-        return resultObject;
+        CommonResObject commonResObject=new CommonResObject();
+        commonResObject.setResMsg("秘钥成功添加");
+        return commonResObject;
     }
 
     /**
@@ -110,12 +109,11 @@ public class EncryAndDecodeController {
     @ResponseBody
     @RequestMapping(value = "/deleteSecretKey", method = RequestMethod.POST)
     @WhichMenu(Menu.ENCRY_AND_DECRY)
-    public ResultObject deleteSecretKey(@RequestBody SecretKeyForm secretKeyForm) throws TopException {
-        ResultObject resultObject=new ResultObject();
+    public CommonResObject deleteSecretKey(@RequestBody SecretKeyForm secretKeyForm) throws TopException {
         encryptAndDecodeService.deleteSecretKey(secretKeyForm);
-        resultObject.setResMsg("秘钥成功删除");
-        resultObject.setResCode(ResultObject.SUCCESS);
-        return resultObject;
+        CommonResObject commonResObject=new CommonResObject();
+        commonResObject.setResMsg("秘钥成功删除");
+        return commonResObject;
     }
 
     /**
@@ -133,12 +131,11 @@ public class EncryAndDecodeController {
     @ResponseBody
     @RequestMapping(value = "/updateSecretKey", method = RequestMethod.POST)
     @WhichMenu(Menu.ENCRY_AND_DECRY)
-    public ResultObject updateSecretKey(@RequestBody SecretKeyForm secretKeyForm) throws TopException {
-        ResultObject resultObject=new ResultObject();
+    public CommonResObject updateSecretKey(@RequestBody SecretKeyForm secretKeyForm) throws TopException {
         encryptAndDecodeService.updateSecretKey(secretKeyForm);
-        resultObject.setResMsg("秘钥成功修改");
-        resultObject.setResCode(ResultObject.SUCCESS);
-        return resultObject;
+        CommonResObject commonResObject=new CommonResObject();
+        commonResObject.setResMsg("秘钥成功修改");
+        return commonResObject;
     }
 
     /**
@@ -156,11 +153,10 @@ public class EncryAndDecodeController {
     @ResponseBody
     @RequestMapping(value = "/findSecretKeyAll", method = RequestMethod.POST)
     @WhichMenu(Menu.ENCRY_AND_DECRY)
-    public ResultObject findSecretKeyAll() throws TopException {
-        ResultObject resultObject=new ResultObject();
-        resultObject.setResMsg(encryptAndDecodeService.secretKeyListPoChangVo(encryptAndDecodeService.findSecretKeyAll()));
-        resultObject.setResCode(ResultObject.SUCCESS);
-        return resultObject;
+    public CommonResObject findSecretKeyAll() throws TopException {
+        CommonResObject commonResObject=new CommonResObject();
+        commonResObject.setResObj(encryptAndDecodeService.secretKeyListPoChangVo(encryptAndDecodeService.findSecretKeyAll()));
+        return commonResObject;
     }
 
     /**
@@ -178,11 +174,10 @@ public class EncryAndDecodeController {
     @ResponseBody
     @RequestMapping(value = "/createSecretKey", method = RequestMethod.POST)
     @WhichMenu(Menu.ENCRY_AND_DECRY)
-    public ResultObject createSecretKey() throws TopException{
-        ResultObject resultObject=new ResultObject();
-        resultObject.setResMsg(encryptAndDecodeService.createSecretKey());
-        resultObject.setResCode(ResultObject.SUCCESS);
-        return resultObject;
+    public CommonResObject createSecretKey() throws TopException{
+        CommonResObject commonResObject=new CommonResObject();
+        commonResObject.setResObj(encryptAndDecodeService.createSecretKey());
+        return commonResObject;
     }
 
     /**
@@ -202,14 +197,12 @@ public class EncryAndDecodeController {
     @ResponseBody
     @RequestMapping(value = "/syncSecretKey", method = RequestMethod.POST)
     @WhichMenu(Menu.ENCRY_AND_DECRY)
-    public ResultObject syncSecretKey(@RequestBody SecretKeyForm secretKeyForm) throws TopException{
-        ResultObject resultObject=new ResultObject();
+    public CommonResObject syncSecretKey(@RequestBody SecretKeyForm secretKeyForm) throws TopException{
         encryptAndDecodeService.syncSecretKey(secretKeyForm);
-        resultObject.setResMsg("秘钥同步成功");
-        resultObject.setResCode(ResultObject.SUCCESS);
-        return resultObject;
+        CommonResObject commonResObject=new CommonResObject();
+        commonResObject.setResMsg("秘钥同步成功");
+        return commonResObject;
     }
-
 
     /**
      * 更新单条秘钥
@@ -226,12 +219,11 @@ public class EncryAndDecodeController {
     @ResponseBody
     @RequestMapping(value = "/renewalSecretKey", method = RequestMethod.POST)
     @WhichMenu(Menu.ENCRY_AND_DECRY)
-    public ResultObject renewalSecretKey(@RequestBody SecretKeyForm secretKeyForm) throws TopException{
-        ResultObject resultObject=new ResultObject();
+    public CommonResObject renewalSecretKey(@RequestBody SecretKeyForm secretKeyForm) throws TopException{
         encryptAndDecodeService.renewalSecretKey(secretKeyForm);
-        resultObject.setResMsg("秘钥更新成功");
-        resultObject.setResCode(ResultObject.SUCCESS);
-        return resultObject;
+        CommonResObject commonResObject=new CommonResObject();
+        commonResObject.setResMsg("秘钥更新成功");
+        return commonResObject;
     }
 
 }

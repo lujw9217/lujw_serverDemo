@@ -65,6 +65,10 @@ public class AesEncryptUtils {
                 .getBytes("UTF-8")));
     }
 
+    public static void main(String[] args) throws Exception {
+        System.out.println(aesEncrypt("CptLOOh9ijGZyo8uJppot4ojH35cTTPc","CptLOOh9ijGZyo8uJppot4ojH35cTTPc"));
+    }
+
     /**
      * @description   : 对称解密
      * @method_name   : aesDecrypt

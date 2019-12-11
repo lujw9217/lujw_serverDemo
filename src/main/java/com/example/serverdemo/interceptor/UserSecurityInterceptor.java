@@ -67,11 +67,11 @@ public class UserSecurityInterceptor implements HandlerInterceptor {
                 if(user==null){
                     //用户未登录不能访问
                     LOGGER.error("未登录! " + requestIp + "进入系统，请求链接为：" + request.getRequestURI());
-                    throw  new TopException("","用户未登录或者会话已过期！");
+                    throw  new TopException("","用户未登录或者会话已过期");
                 }
             } else {
                 LOGGER.error("<!!--拦截器： 会话失效，请重新登录-->");
-                throw new DebugParamException("会话失效，请重新登录！");
+                throw new DebugParamException("会话失效，请重新登录");
             }
         }
         HandlerMethod handlerMethod = (HandlerMethod) handler;

@@ -11,9 +11,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
@@ -28,7 +28,7 @@ import javax.servlet.http.HttpServletResponse;
  * -----------------------------------------
  * Lujw   2019/10/28      创建
  */
-@Controller
+@RestController
 @RequestMapping("/web")
 public class FileUploadRestController {
     private static final Logger LOGGER = LoggerFactory.getLogger(EncryptAndDecodeService.class);
@@ -53,7 +53,7 @@ public class FileUploadRestController {
      * @update author :
      */
     @WhichMenu(Menu.FILE_TO_BASE64)
-    @PostMapping(value ="/fileToBase64")
+    @RequestMapping(value ="/fileToBase64")
     public CommonResObject fileToBase64(@RequestParam("file") MultipartFile file)throws TopException {
         //文件类型
         String contentType = file.getContentType();
@@ -78,7 +78,6 @@ public class FileUploadRestController {
             throw new TopException("文件上传失败", "文件上传失败");
         }
         LOGGER.info("上传完成【100%】");
-
         String base64Text;
         try{
             LOGGER.info("开始将文件转成Base64");
@@ -90,6 +89,7 @@ public class FileUploadRestController {
         }
         CommonResObject commonResObject=new CommonResObject();
         commonResObject.setResObj(base64Text);
+        commonResObject.setResMsg("文件编码成功");
         return commonResObject;
     }
 
@@ -104,13 +104,14 @@ public class FileUploadRestController {
      * @update author :
      */
     @WhichMenu(Menu.FILE_TO_BASE64)
-    @PostMapping(value ="/base64ToFile")
+    @RequestMapping(value ="/base64ToFile")
     public CommonResObject  base64ToFile(@RequestParam("base64Text") String base64Text, @RequestParam("fileName") String fileName, HttpServletResponse response)throws TopException {
-        CommonResObject resObject=new CommonResObject();
+        CommonResObject commonResObject=new CommonResObject();
         LOGGER.info("<------- 开始将base64编码转成数据流 --------->");
-        resObject.setResObj(fileToBase64Service.base64ToFile(base64Text,fileDownloadPath,fileName));
+        commonResObject.setResObj(fileToBase64Service.base64ToFile(base64Text,fileDownloadPath,fileName));
         LOGGER.info("<------- base64编码转成数据流成功 --------->");
-        return resObject;
+        commonResObject.setResMsg("文件解码成功");
+        return commonResObject;
 
 //        response.setContentType("text/plain;");
 //        //设置响应头

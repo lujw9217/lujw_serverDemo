@@ -221,8 +221,7 @@ public class UserServiceImpl implements IUserService {
   * @update author :
   */
     @Override
-    public ResultObject getAllAndMenus() {
-        ResultObject resultObject = new ResultObject();
+    public UsersAndMenus getAllAndMenus() {
         //返回对象
         UsersAndMenus usersAndMenus = new UsersAndMenus();
         //调用dao层查找所有用户
@@ -252,10 +251,7 @@ public class UserServiceImpl implements IUserService {
             menuVos.add(MenuUtil.menuPoToMenuVo(menuPo));
         }
         usersAndMenus.setMenuVos(menuVos);
-        resultObject.setResCode(ResultObject.SUCCESS);
-        //存入返回对象中
-        resultObject.setResMsg(usersAndMenus);
-        return resultObject;
+        return usersAndMenus;
     }
 
     /**
@@ -270,7 +266,7 @@ public class UserServiceImpl implements IUserService {
      * @update author :
      */
     @Override
-    public ResultObject addUser(ManagerUserForm managerUserForm) throws TopException {
+    public void addUser(ManagerUserForm managerUserForm) throws TopException {
         ResultObject resultObject = new ResultObject();
         //检查表单输入参数 合法性
         checkFormParameter(managerUserForm);
@@ -290,11 +286,8 @@ public class UserServiceImpl implements IUserService {
         managerUserPo.setPassword(pwd);
         //创建时间
         managerUserPo.setCreate_time(DateUtil.dateFormat(new Date(),DateUtil.DATE_FORMAT_LONG));
-        resultObject.setResMsg("添加用户成功");
         //保存用户
         userDao.save(managerUserPo);
-        resultObject.setResCode(ResultObject.SUCCESS);
-        return resultObject;
     }
 
     
@@ -310,8 +303,7 @@ public class UserServiceImpl implements IUserService {
    * @update author :
    */
     @Override
-    public ResultObject modifyUser(ManagerUserForm managerUserForm) throws TopException {
-        ResultObject resultObject = new ResultObject();
+    public void modifyUser(ManagerUserForm managerUserForm) throws TopException {
         //检查表单输入参数 是否合法性
         checkFormParameter(managerUserForm);
         //将Vo对象 转化为Po
@@ -340,11 +332,8 @@ public class UserServiceImpl implements IUserService {
         managerUserPo.setPassword(userPo.getPassword());
         //最后更新时间
         managerUserPo.setLastUpdate_time(DateUtil.dateFormat(new Date(),DateUtil.DATE_FORMAT_LONG));
-        resultObject.setResMsg("用户修改成功");
         //持久化修改用户
         userDao.save(managerUserPo);
-        resultObject.setResCode(ResultObject.SUCCESS);
-        return  resultObject;
     }
 
  /**
@@ -432,15 +421,11 @@ public class UserServiceImpl implements IUserService {
     * @update author :
     */
     @Override
-    public ResultObject deleteUser(String id) {
-        ResultObject resultObject = new ResultObject();
+    public void deleteUser(String id) {
         //通过id查找用户
         ManagerUserPo managerUserPo = userDao.findById(id);
         //真实删除
         userDao.deleteUserByPo(managerUserPo);
-        resultObject.setResCode(ResultObject.SUCCESS);
-        resultObject.setResMsg("删除用户成功");
-        return resultObject;
     }
 
     /**
@@ -455,8 +440,7 @@ public class UserServiceImpl implements IUserService {
      * @update author :
      */
     @Override
-    public ResultObject modifyPwd(String oldPwd,String newPwd, ManagerUserVo userVo) throws TopException {
-        ResultObject resultObject = new ResultObject();
+    public void modifyPwd(String oldPwd,String newPwd, ManagerUserVo userVo) throws TopException {
         //查找po对象
         ManagerUserPo userPo = userDao.findById(userVo.get_id());
         //加密旧密码
@@ -478,10 +462,6 @@ public class UserServiceImpl implements IUserService {
         userPo.setPassword(md5NewPwd);
         //更新密码
         userDao.save(userPo);
-        resultObject.setResCode(ResultObject.SUCCESS);
-        resultObject.setResMsg("更新密码成功");
-        //返回响应对象
-        return resultObject;
     }
 
 

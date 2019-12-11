@@ -90,10 +90,14 @@ public class FileToBase64Serviceimpl implements FileToBase64Service {
         String str=path.toString();
 
         //dev
-        String fileDownloadUrl="https://lujw.xyz/web/"+ str.substring(str.lastIndexOf("\\")+1,str.length());
+        String fileDownloadUrl="C:\\Users\\fei\\Desktop\\download\\"+ str.substring(str.lastIndexOf("\\")+1,str.length());
+
+        //pro
+//        String fileDownloadUrl= "lujw.xyz:9000/prod/download/1576049727946..png"+ str.substring(str.lastIndexOf("\\")+1,str.length());
+
+
         LOGGER.info("《------------------文件下载地址，fileDownloadUrl:{}",fileDownloadUrl);
 
-        int num=new Random().nextInt(100);
         //将url返给前台，交给前台去下载。不使用后台下载
         return fileDownloadUrl;
         //将服务器中文件下载本地到指定目录（后台下载）
