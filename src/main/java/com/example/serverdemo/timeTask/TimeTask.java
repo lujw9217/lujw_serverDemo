@@ -17,7 +17,7 @@ import java.io.File;
 /**
  * @author : Lujw
  * @Class Name   : TimeTask
- * @Description : TODO
+ * @Description : 定时任务实现类
  * @Project : serverdemo
  * @Program : com.example.serverdemo.timeTask
  * @date : 2019/12/10 20:48
@@ -34,21 +34,32 @@ public class TimeTask {
     private String active;
 
     //配置文件中的秘钥
-//    @Value("${AseKey}")
+    @Value("${AseKey}")
     private String key;
 
     @Resource
     private IEncryRepository encryDao;
 
+    /**
+     * @description   : 程序启动时加载秘钥
+     * @method_name   : initAesKey
+     * @param         : []
+     * @return        : void
+     * @throws        :
+     * @date          : 2019/12/12 14:29
+     * @author        : Lujw
+     * @update date   :
+     * @update author :
+     */
     public void initAesKey(){
         /**
          * 根据环境自行去数据库中匹配秘钥
          */
         Query query;
-        if("pro60".equals(active)){
-            query = new Query(Criteria.where("secretKeyType").is("prod"));
+        if("prod".equals(active)){
+            query = new Query(Criteria.where("secretKeyType").is("生产"));
         }else {
-            query = new Query(Criteria.where("secretKeyType").is("dev "));
+            query = new Query(Criteria.where("secretKeyType").is("本地 "));
         }
         EncryPo encryPo = encryDao.findSecretKey(query);
 

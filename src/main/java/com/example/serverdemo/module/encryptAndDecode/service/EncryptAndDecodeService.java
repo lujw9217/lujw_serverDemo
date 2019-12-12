@@ -25,7 +25,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-
 /**
  * @author : Lujw
  * @Class Name   : EncryAndDecodeService
@@ -40,8 +39,11 @@ public class EncryptAndDecodeService {
     private static final Logger LOGGER = LoggerFactory.getLogger(EncryptAndDecodeService.class);
 
     //配置文件中的秘钥
-//    @Value("${AseKey}")
+    @Value("${AseKey}")
     private String key;
+
+    @Value("${spring.profiles.active}")
+    private String active;
 
     @Autowired
     private IEncryRepository encryDao;
@@ -73,11 +75,9 @@ public class EncryptAndDecodeService {
     }
 
     /**
-     * 加密
-     *
      * @param : [encryForm]
      * @throws :
-     * @description : TODO
+     * @description : 加密
      * @method_name : getEncrypt
      * @date :
      * @version : v1.00
@@ -102,12 +102,10 @@ public class EncryptAndDecodeService {
     }
 
     /**
-     * 解密待解密秘钥
-     *
      * @param : [secretKey]
      * @return : java.lang.String
      * @throws :
-     * @description : TODO
+     * @description : 解密待解密秘钥
      * @method_name : buildDecodeSecretKey
      * @date :
      * @version : v1.00
@@ -134,13 +132,10 @@ public class EncryptAndDecodeService {
         return decodeSecretKey;
     }
 
-
     /**
-     * 查询数据库，获取秘钥
-     *
      * @param : [encryForm]
      * @throws :
-     * @description : TODO
+     * @description : 查询数据库，获取秘钥
      * @method_name : getEncryPo
      * @date :
      * @version : v1.00
@@ -161,12 +156,10 @@ public class EncryptAndDecodeService {
     }
 
     /**
-     * 添加秘钥
-     *
      * @param : [secretKeyForm]
      * @return : void
      * @throws :
-     * @description : TODO
+     * @description : 添加秘钥
      * @method_name : addSecretKey
      * @date :
      * @version : v1.00
@@ -199,11 +192,9 @@ public class EncryptAndDecodeService {
     }
 
     /**
-     * 组装SecretKeyPo
-     *
      * @param : [secretKeyForm]
      * @throws :
-     * @description : TODO
+     * @description : 组装SecretKeyPo
      * @method_name : buildSecretKeyPo
      * @date :
      * @version : v1.00
@@ -218,14 +209,11 @@ public class EncryptAndDecodeService {
         return encryPo;
     }
 
-
     /**
-     * 删除秘钥
-     *
      * @param : [secretKeyForm]
      * @return : void
      * @throws :
-     * @description : TODO
+     * @description : 删除秘钥
      * @method_name : deleteSecretKey
      * @date :
      * @version : v1.00
@@ -243,14 +231,11 @@ public class EncryptAndDecodeService {
         }
     }
 
-
     /**
-     * 更新秘钥
-     *
      * @param : [secretKeyForm]
      * @return : void
      * @throws :
-     * @description : TODO
+     * @description : 更新秘钥
      * @method_name : updateSecretKey
      * @date :
      * @version : v1.00
@@ -268,11 +253,9 @@ public class EncryptAndDecodeService {
     }
 
     /**
-     * 组装新的秘钥实体类
-     *
      * @param : [secretKeyForm]
      * @throws :
-     * @description : TODO
+     * @description : 组装新的秘钥实体类
      * @method_name : buildNewEncryPo
      * @date :
      * @version : v1.00
@@ -295,11 +278,9 @@ public class EncryptAndDecodeService {
     }
 
     /**
-     * 查询所有秘钥
-     *
      * @param : []
      * @throws :
-     * @description : TODO
+     * @description : 查询所有秘钥
      * @method_name : findSecretKeyAll
      * @date :
      * @version : v1.00
@@ -320,11 +301,9 @@ public class EncryptAndDecodeService {
 
 
     /**
-     * secretKeyPo集合转secretKeyVo集合
-     *
      * @param : [secretKeyListPo]
      * @throws :
-     * @description : TODO
+     * @description : secretKeyPo集合转secretKeyVo集合
      * @method_name : secretKeyListPoChangVo
      * @date :
      * @version : v1.00
@@ -344,12 +323,10 @@ public class EncryptAndDecodeService {
     }
 
     /**
-     * 生成随机秘钥
-     *
      * @param : []
      * @return : java.lang.String
      * @throws :
-     * @description : TODO
+     * @description : 生成随机秘钥
      * @method_name : createSecretKey
      * @date :
      * @version : v1.00
@@ -409,7 +386,14 @@ public class EncryptAndDecodeService {
          * ********************注意*********************
          * 配置中成功更新秘钥后，生成的秘钥文件请及时安全删除，以防外泄！！！！！！
          */
-        try(FileWriter fw = new FileWriter("C:\\Users\\fei\\Desktop\\key.txt")){
+        String filePath="";
+        if("prod".equals(active)){
+            filePath="/usr/app/server/keytemp/key.txt";
+        }else if("dev".equals(active)){
+            filePath="C:\\Users\\fei\\Desktop\\key.txt";
+        }
+
+        try(FileWriter fw = new FileWriter(filePath)){
             fw.write(secretKeyForm.getSecretKey());
         } catch (IOException e) {
             LOGGER.error("<------- 秘钥输出到文件出错 -------->");

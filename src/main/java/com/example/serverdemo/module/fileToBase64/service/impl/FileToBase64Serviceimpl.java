@@ -16,7 +16,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.Base64;
-import java.util.Random;
 
 /**
  * @author : Lujw
@@ -93,13 +92,13 @@ public class FileToBase64Serviceimpl implements FileToBase64Service {
 //        String fileDownloadUrl="C:\\Users\\fei\\Desktop\\download\\"+ str.substring(str.lastIndexOf("\\")+1,str.length());
 
 //        pro
-        String fileDownloadUrl="file"+ str.substring(str.lastIndexOf("\\")+1,str.length());
+//        String fileDownloadUrl="file/download/"+str.substring(str.lastIndexOf("/")+1,str.length());
 
 
-        LOGGER.info("《------------------文件下载地址，fileDownloadUrl:{}",fileDownloadUrl);
+        LOGGER.info("《------------------文件下载地址，fileDownloadUrl:{}",str);
 
         //将url返给前台，交给前台去下载。不使用后台下载
-        return fileDownloadUrl;
+        return str;
         //将服务器中文件下载本地到指定目录（后台下载）
         //downloadFile(fileDownloadUrl,localPath);
     }

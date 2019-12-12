@@ -226,7 +226,7 @@ public class UserServiceImpl implements IUserService {
         UsersAndMenus usersAndMenus = new UsersAndMenus();
         //调用dao层查找所有用户
         List<ManagerUserPo> userPos = userDao.findAllUser();
-        //用户PO集合
+        //用户VO集合
         List<ManagerUserVo> userVos = new ArrayList<>();
         //转化为vo对象
         for (ManagerUserPo managerUserPo : userPos){
@@ -242,8 +242,8 @@ public class UserServiceImpl implements IUserService {
         MenuPo m = new MenuPo();
         m.setMenuCode(Menu.CUSTOMER_USER_MANAGE.getCode());
         menuPos.remove(m);
-        m.setMenuCode(Menu.ENCRY_AND_DECRY.getCode());
-        menuPos.remove(m);
+//        m.setMenuCode(Menu.ENCRY_AND_DECRY.getCode());
+//        menuPos.remove(m);
 
         List<MenuVo> menuVos = new ArrayList<>();
         //转化成Vo

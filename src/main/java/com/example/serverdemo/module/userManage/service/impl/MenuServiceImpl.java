@@ -1,6 +1,5 @@
 package com.example.serverdemo.module.userManage.service.impl;
 
-import com.example.serverdemo.base.entity.CommonResObject;
 import com.example.serverdemo.base.security.MenuChecker;
 import com.example.serverdemo.module.userManage.service.IMenuService;
 import com.example.serverdemo.module.userManage.vo.ManagerUserVo;

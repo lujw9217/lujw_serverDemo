@@ -1,7 +1,6 @@
 package com.example.serverdemo.module.encryptAndDecode.controller;
 
 import com.example.serverdemo.base.entity.CommonResObject;
-import com.example.serverdemo.base.entity.ResultObject;
 import com.example.serverdemo.base.exception.TopException;
 import com.example.serverdemo.base.security.WhichMenu;
 import com.example.serverdemo.module.encryptAndDecode.from.EncryForm;
@@ -30,8 +29,7 @@ public class EncryAndDecodeController {
     private EncryptAndDecodeService encryptAndDecodeService;
 
     /**
-     * 解密
-     * @description   : TODO
+     * @description   : 解密
      * @method_name   : query
      * @param         : [encryForm]
      * @throws        :
@@ -44,16 +42,14 @@ public class EncryAndDecodeController {
     @ResponseBody
     @RequestMapping(value = "/decode", method = RequestMethod.POST)
     @WhichMenu(Menu.ENCRY_AND_DECRY)
-    public ResultObject decode(@RequestBody EncryForm encryForm) throws TopException {
-        ResultObject resultObject=new ResultObject();
-        resultObject.setResMsg(encryptAndDecodeService.getDecode(encryForm));
-        resultObject.setResCode(ResultObject.SUCCESS);
-        return resultObject;
+    public CommonResObject decode(@RequestBody EncryForm encryForm) throws TopException {
+        CommonResObject commonResObject=new CommonResObject();
+        commonResObject.setResObj(encryptAndDecodeService.getDecode(encryForm));
+        return commonResObject;
     }
 
     /**
-     * 加密
-     * @description   : TODO
+     * @description   : 加密
      * @method_name   : encrypt
      * @param         : [encryForm]
      * @throws        :
@@ -73,8 +69,7 @@ public class EncryAndDecodeController {
     }
 
     /**
-     * 添加秘钥
-     * @description   : TODO
+     * @description   : 添加秘钥
      * @method_name   : addSecretKey
      * @param         : [secretKeyForm]
      * @throws        :
@@ -95,8 +90,7 @@ public class EncryAndDecodeController {
     }
 
     /**
-     * 删除秘钥
-     * @description   : TODO
+     * @description   : 删除秘钥
      * @method_name   : deleteSecretKey
      * @param         : [secretKeyForm]
      * @throws        :
@@ -117,8 +111,7 @@ public class EncryAndDecodeController {
     }
 
     /**
-     * 修改秘钥
-     * @description   : TODO
+     * @description   : 修改秘钥
      * @method_name   : updateSecretKey
      * @param         : [secretKeyForm]
      * @throws        :
@@ -205,8 +198,7 @@ public class EncryAndDecodeController {
     }
 
     /**
-     * 更新单条秘钥
-     * @description   : TODO
+     * @description   : 更新单条秘钥
      * @method_name   : renewalSecretKey
      * @param         : [secretKeyForm]
      * @throws        :
