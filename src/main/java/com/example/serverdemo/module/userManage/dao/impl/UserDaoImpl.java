@@ -23,7 +23,6 @@ public class UserDaoImpl implements IUserDao {
     @Autowired
     private MongoTemplate mongoTemplate;
 
-
     /**
      * @description   : 保存用户
      * @method_name   : save
@@ -102,7 +101,6 @@ public class UserDaoImpl implements IUserDao {
        return  mongoTemplate.find(query,ManagerUserPo.class,COLLECTION_TABLE_USER);
     }
 
-    
     /**
      * @description   : 通过id 查找用户
      * @method_name   : findById

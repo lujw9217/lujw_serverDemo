@@ -1,7 +1,6 @@
 package com.example.serverdemo.module.userManage.constroller;
 
 import com.example.serverdemo.base.entity.CommonResObject;
-import com.example.serverdemo.base.entity.ResultObject;
 import com.example.serverdemo.base.entity.SessionManage;
 import com.example.serverdemo.base.exception.TopException;
 import com.example.serverdemo.base.security.WhichMenu;
@@ -13,7 +12,6 @@ import com.example.serverdemo.module.userManage.vo.ManagerUserForm;
 import com.example.serverdemo.module.userManage.vo.ManagerUserVo;
 import com.example.serverdemo.module.userManage.vo.ResMenus;
 import com.example.serverdemo.module.userManage.vo.UserPwdForm;
-import com.mongodb.CommandResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

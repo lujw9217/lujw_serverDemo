@@ -8,12 +8,13 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-
 /**
  * 菜单 dao 实现类
  */
 @Repository
 public class MenuDaoImpl implements IMenuDao {
+
+    private static final String COLLECTION_TABLE_MENU = "menu";
 
     //注入MongoDB操作模板
     @Autowired
@@ -32,7 +33,7 @@ public class MenuDaoImpl implements IMenuDao {
      */
     @Override
     public List<MenuPo> findAll() {
-        return mongoTemplate.findAll(MenuPo.class);
+        return mongoTemplate.findAll(MenuPo.class,COLLECTION_TABLE_MENU);
     }
 
    /**
@@ -48,6 +49,6 @@ public class MenuDaoImpl implements IMenuDao {
     */
     @Override
     public void addMenu(MenuPo menuPo) {
-        mongoTemplate.save(menuPo);
+        mongoTemplate.save(menuPo,COLLECTION_TABLE_MENU);
     }
 }

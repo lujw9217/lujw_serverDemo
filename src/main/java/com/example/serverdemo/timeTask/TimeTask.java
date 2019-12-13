@@ -82,7 +82,7 @@ public class TimeTask {
      * @update author :
      */
     public void deleteFile(File file) {
-        if("pro60".equals(active)){
+        if("prod".equals(active)){
             LOGGER.info("检测运行环境为生产环境，启动定时清理线程，执行清理操作!");
             if (file.isDirectory()) {
                 String[] children = file.list();//获取文件夹下所有子文件夹

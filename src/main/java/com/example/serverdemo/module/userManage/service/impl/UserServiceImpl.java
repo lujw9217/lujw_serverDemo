@@ -26,7 +26,6 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.*;
 
-
 /**
  * 用户服务接口 实现类
  */
@@ -267,7 +266,6 @@ public class UserServiceImpl implements IUserService {
      */
     @Override
     public void addUser(ManagerUserForm managerUserForm) throws TopException {
-        ResultObject resultObject = new ResultObject();
         //检查表单输入参数 合法性
         checkFormParameter(managerUserForm);
         //查找所有用户
@@ -290,7 +288,6 @@ public class UserServiceImpl implements IUserService {
         userDao.save(managerUserPo);
     }
 
-    
   /**
    * @description   : 修改用户
    * @method_name   : modifyUser

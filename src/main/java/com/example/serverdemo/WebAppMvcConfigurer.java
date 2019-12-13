@@ -120,7 +120,7 @@ public class WebAppMvcConfigurer extends WebMvcConfigurerAdapter {
     @Scheduled(cron = "0 0 2 * * ?")
     public void deleteFileTimeTask(){
         LOGGER.info("<--------- 定时任务启动，开始清空指定位置文件 -------->");
-        timeTask.deleteFile(new File(""));
-        timeTask.deleteFile(new File(""));
+        timeTask.deleteFile(new File("/usr/app/server_web/upload"));
+        timeTask.deleteFile(new File("/usr/app/server_web/download"));
     }
 }

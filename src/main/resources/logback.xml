@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
     <!--生产日志路径-->
-	<!--<property name="LOG_FILE_ROOT" value="/opt/logs" />-->
+	<property name="LOG_FILE_ROOT" value="/usr/app/server/logs" />
     <!--本地日志路径-->
     <!--<property name="LOG_FILE_ROOT" value="D:\logs" />-->
 	<!-- appenders -->

@@ -1,6 +1,5 @@
 package com.example.serverdemo.module.userManage.vo;
 
-
 import com.example.serverdemo.base.vo.BaseVO;
 import com.example.serverdemo.module.userManage.constant.Menu;
 import com.example.serverdemo.module.userManage.po.ManagerUserPo;
